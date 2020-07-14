@@ -1,190 +1,14 @@
 function test{
     <#
     .SYNOPSIS
-
-        a
-
+    
     .DESCRIPTION
 
-        a
-
     .PARAMETER CollectionMethod
-
-        Specifies the CollectionMethod being used. Possible value are:
-            Group - Collect group membership information
-            LocalGroup - Collect local group information for computers
-            LocalAdmin - Collect local admin users for computers
-            RDP - Collect remote desktop users for computers
-            DCOM - Collect distributed COM users for computers
-			PSRemote - Collected members of the Remote Management Users group for computers
-            Session - Collect session information for computers
-            SessionLoop - Continuously collect session information until killed
-            Trusts - Enumerate domain trust data
-            ACL - Collect ACL (Access Control List) data
-            Container - Collect GPO/OU Data
-            ComputerOnly - Collects Local Admin and Session data
-            GPOLocalGroup - Collects Local Admin information using GPO (Group Policy Objects)
-            LoggedOn - Collects session information using privileged methods (needs admin!)
-            ObjectProps - Collects node property information for users and computers
-			SPNTargets - Collects SPN targets (currently only MSSQL)
-            Default - Collects Group Membership, Local Admin, Sessions, and Domain Trusts
-            DcOnly - Collects Group Membership, ACLs, ObjectProps, Trusts, Containers, and GPO Admins
-            All - Collect all data except GPOLocalGroup
-
-        This can be a list of comma seperated valued as well to run multiple collection methods!
-
-	.PARAMETER Stealth
-
-        Use stealth collection options, will sacrifice data quality in favor of much reduced
-        network impact
+     
+    .PARAMETER Stealth
 
     .PARAMETER Domain
-
-        Specifies the domain to enumerate. If not specified, will enumerate the current
-        domain your user context specifies.
-
-	.PARAMETER WindowsOnly
-	
-		Limits computer collection to systems that have an operatingssytem attribute that matches *Windows*
-
-	.PARAMETER ComputerFile
-
-        A file containing a list of computers to enumerate. This option can only be used with the following Collection Methods:
-        Session, SessionLoop, LocalGroup, ComputerOnly, LoggedOn
-
-    .PARAMETER LdapFilter
-
-        Append this ldap filter to the search filter to further filter the results enumerated
-
-	.PARAMETER SearchBase
-
-		DistinguishedName to start LDAP searches at. Equivalent to the old --OU option
-
-    .PARAMETER OutputDirectory
-
-        Folder to output files too
-
-	.PARAMETER OutputPrefix
-
-        Prefix to add to output files
-
-	
-	.PARAMETER PrettyJSON
-
-        Output "pretty" json with formatting for readability
-
-	.PARAMETER CacheFilename
-
-        Name for the cache file dropped to disk (default: unique hash generated per machine)
-
-    .PARAMETER RandomFilenames
-
-        Randomize file names completely
-
-	.PARAMETER ZipFilename
-
-        Name for the zip file output by data collection
-
-	.PARAMETER NoSaveCache
-
-        Don't write the cache file to disk. Caching will still be performed in memory.
-
-	.PARAMETER EncryptZip
-
-        Encrypt the zip file with a random password
-
-	.PARAMETER NoZip
-
-        Do NOT zip the json files
-
-	.PARAMETER InvalidateCache
-
-        Invalidate and rebuild the cache file
-
-	.PARAMETER LdapFilter
-
-        Append this ldap filter to the search filter to further filter the results enumerated
-
-	.PARAMETER DomainController
-
-        Domain Controller to connect too. Specifiying this can result in data loss
-
-	.PARAMETER LdapPort
-
-        Port LDAP is running on. Defaults to 389/686 for LDAPS
-
-	.PARAMETER SecureLDAP
-
-        Connect to LDAPS (LDAP SSL) instead of regular LDAP
-	
-	.PARAMETER DisableKerberosSigning
-
-        Disables keberos signing/sealing, making LDAP traffic viewable
-
-	.PARAMETER LdapUsername
-
-        Username for connecting to LDAP. Use this if you're using a non-domain account for connecting to computers
-
-	.PARAMETER LdapPassword
-
-        Password for connecting to LDAP. Use this if you're using a non-domain account for connecting to computers
-
-	.PARAMETER SkipPortScan
-
-        Skip SMB port checks when connecting to computers
-
-	.PARAMETER PortScanTimeout
-
-        Timeout for SMB port checks
-
-	.PARAMETER ExcludeDomainControllers
-
-        Exclude domain controllers from enumeration (usefult o avoid Microsoft ATP/ATA)
-
-	.PARAMETER Throttle
-
-        Throttle requests to computers (in milliseconds)
-
-	.PARAMETER Jitter
-
-        Add jitter to throttle
-
-	.PARAMETER OverrideUserName
-
-        Override username to filter for NetSessionEnum
-
-	.PARAMETER NoRegistryLoggedOn
-
-        Disable remote registry check in LoggedOn collection
-
-	.PARAMETER DumpComputerStatus
-
-        Dumps error codes from attempts to connect to computers
-
-	.PARAMETER RealDNSName
-
-        Overrides the DNS name used for API calls
-
-	.PARAMETER CollectAllProperties
-
-        Collect all string LDAP properties on objects
-
-	.PARAMETER StatusInterval
-
-        Interval for displaying status in milliseconds
-
-	.PARAMETER Loop
-
-        Perform looping for computer collection
-
-	.PARAMETER LoopDuration
-
-        Duration to perform looping (Default 02:00:00)
-
-	.PARAMETER LoopInterval
-
-        Interval to sleep between loops (Default 00:05:00)
-
     #>
 
     param(
@@ -478,7 +302,7 @@ function test{
     $passed = [string[]]$vars.ToArray()
 
 
-  $b = ""
+  	$b = ""
 	$DeflatedStream = New-Object IO.Compression.DeflateStream([IO.MemoryStream][Convert]::FromBase64String($b),[IO.Compression.CompressionMode]::Decompress)
 	$c = New-Object Byte[](833536)
 	$DeflatedStream.Read($c, 0, 833536) | Out-Null
@@ -486,5 +310,5 @@ function test{
 	$BindingFlags = [Reflection.BindingFlags] "Public,Static"
 	$a = @()
 	$Assembly.GetType("Costura.AssemblyLoader", $false).GetMethod("Attach", $BindingFlags).Invoke($Null, @())
-	$Assembly.GetType("SharpHound3.SharpHound").GetMethod("InvokeSharpHound").Invoke($Null, @(,$passed))
+	
 }
