@@ -1,3 +1,4 @@
+## Sometimes AV will block the normal script, just try this command
 ### Run this script with
 
 ```
