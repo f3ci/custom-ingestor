@@ -1,4 +1,4 @@
-function test{
+function lol{
     <#
     .SYNOPSIS
     
